@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>❤️ The Ultimate Valentine Quest ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #ffb6c1, #ffe6eb);
+            color: #7a003c;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2 {
+            margin-top: 30px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        button {
+            background: #ff4d6d;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 25px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 8px;
+        }
+
+        button:hover {
+            background: #e63956;
+        }
+
+        input {
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .big {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        /* Drag & Drop */
+        .dropzone {
+            border: 2px dashed #ff4d6d;
+            border-radius: 15px;
+            padding: 20px;
+            min-height: 60px;
+        }
+
+        .draggable {
+            font-size: 32px;
+            cursor: grab;
+            margin: 10px;
+            display: inline-block;
+        }
+
+        /* Match pairs */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .card-tile {
+            background: #ffccd5;
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 28px;
+            cursor: pointer;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: red;
+            animation: fall 3s linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>💘 Good Evening Sethu 💘</h1>
+        <p>Over 30 riddles & games stand between you and one important question…</p>
+
+        <!-- STEP 1 -->
+
+
+        <!-- STEP 3 -->
+
+
+        <!-- STEP 4 -->
+
+
+        <!-- STEP 5 MEMORY -->
+
+
+        <!-- STEP 6 -->
+
+
+        <!-- STEP 7 -->
+
+
+        <!-- STEP 8 DRAG & DROP -->
+        <div class="card" id="s8">
+            <h2>Perfect Valentine 🎁</h2>
+            <div>
+                <span class="draggable" draggable="true">🌹</span>
+                <span class="draggable" draggable="true">🍫</span>
+                <span class="draggable" draggable="true">💣</span>
+                <span class="draggable" draggable="true">🪨</span>
+            </div>
+            <div id="drop" class="dropzone">Drop only the right gifts</div>
+            <button onclick="checkDrop()">Next</button>
+        </div>
+
+        <!-- STEP 9 -->
+
+
+        <!-- STEP 10 -->
+
+        <!-- STEP 11 SPEED -->
+        <div class="card hidden" id="s9">
+            <h2>Speed Click ⚡</h2>
+            <p>Click ❤️ 10 times</p>
+            <button onclick="countClick(10,'s10')">❤️</button>
+            <p id="clicks">0</p>
+        </div>
+
+        <!-- STEP 12 MATCH PAIRS -->
+        <div class="card hidden" id="s10">
+            <h2>Match the Pairs 🧩</h2>
+            <div class="grid" id="pairs"></div>
+        </div>
+
+        <!-- STEP 13–29 EMOJI TRANSLATIONS -->
+
+        <div class="card hidden" id="s25">
+            <h2>Riddle 💘</h2>
+            <p>I have no weight but can lift you up.</p><input id="a25" /><button
+                onclick="unlock('a25','love','s30')">Next</button>
+        </div>
+        <div class="card hidden" id="s30">
+            <h2>Riddle 💡</h2>
+            <p>What do you break the moment you name it?</p>
+            <input id="a30" />
+            <button onclick="unlock('a30','silence','s31')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s31">
+            <h2>Riddle 📖</h2>
+            <p>What has words, yet never speaks?</p>
+            <input id="a31" />
+            <button onclick="unlock('a31','book','s32')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s32">
+            <h2>Riddle 🌊</h2>
+            <p>What did the ocean say to the sand?</p>
+            <input id="a32" />
+            <button onclick="unlock('a32','nothing','s33')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s33">
+            <h2>Riddle 🪞</h2>
+            <p>What’s the quickest way to double your money?</p>
+            <input id="a33" />
+            <button onclick="unlock('a33','mirror','s34')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s34">
+            <h2>Riddle 💦</h2>
+            <p>If you throw a black stone into the Red Sea, what does it become?</p>
+            <input id="a34" />
+            <button onclick="unlock('a34','wet','s35')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s35">
+            <h2>Riddle 😎</h2>
+            <p>I am a protector who sits on a bridge. Only one person can see through me. What am I?</p>
+            <input id="a35" />
+            <button onclick="unlock('a35','sunglasses','s36')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s36">
+            <h2>Riddle ⛳</h2>
+            <p>Why did the golfer have to change his pants?</p>
+            <input id="a36" />
+            <button onclick="unlock('a36','hole','s37')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s37">
+            <h2>Riddle 🤫</h2>
+            <p>If you have me, you want to share me. If you share me, you haven’t kept me.</p>
+            <input id="a37" />
+            <button onclick="unlock('a37','secret','s38')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s38">
+            <h2>Riddle 🌙</h2>
+            <p>I am always old, but sometimes also new. I’m sometimes blue, never empty, and always pull.</p>
+            <input id="a38" />
+            <button onclick="unlock('a38','moon','s39')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s39">
+            <h2>Riddle 👁️</h2>
+            <p>What bats, but never hits; is near a ball, but never thrown?</p>
+            <input id="a39" />
+            <button onclick="unlock('a39','eyelashes','s40')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s40">
+            <h2>Riddle 🧽</h2>
+            <p>What can hold water despite being full of holes?</p>
+            <input id="a40" />
+            <button onclick="unlock('a40','sponge','s41')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s41">
+            <h2>Riddle 🔥</h2>
+            <p>If you give me a drink, I die. If you feed me, I grow.</p>
+            <input id="a41" />
+            <button onclick="unlock('a41','fire','s42')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s42">
+            <h2>Riddle ✉️</h2>
+            <p>What word starts with E, ends with E, but only holds one letter?</p>
+            <input id="a42" />
+            <button onclick="unlock('a42','envelope','s43')">Next</button>
+        </div>
+
+        <div class="card hidden" id="s43">
+            <h2>Riddle 🕰️</h2>
+            <p>What has hands and a face, but can’t touch or see?</p>
+            <input id="a43" />
+            <button onclick="unlock('a43','clock','s44')">Next</button>
+        </div>
+
+        <div class="card" id="s44">
+            <h2>Riddle 💡</h2>
+            <p>What can fill a room without taking up any space?</p>
+            <input id="a44" />
+            <button onclick="unlock('a44','light','final')">Reveal</button>
+        </div>
+
+
+        <!-- FINAL -->
+        <div class="card hidden" id="final">
+            <h2 class="big">💖 Will You Be My Valentine? 💖</h2>
+            <button onclick="yes()">YES 💕</button>
+            <button id="noBtn" onclick="no()">No 🙈</button>
+            <div id="celebrate" class="hidden">
+                <h2>🎉 You said YES! 🎉</h2>
+                <p>Ike And Sethu, Sitting in a tree. K.I.S.S.I.N.G. hahaha... ❤️</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let clickCounter = 0;
+        let dropped = [];
+        let first = null;
+        let matched = 0;
+
+        function unlock(id, answer, next) {
+            if (document.getElementById(id).value.toLowerCase().includes(answer)) showNext(next);
+            else alert('Try again 💗');
+        }
+        function unlockMulti(id, answers, next) {
+            const v = document.getElementById(id).value.toLowerCase();
+            if (answers.some(a => v.includes(a))) showNext(next);
+            else alert('Almost 💞');
+        }
+        function checkExact(id, val, next) {
+            if (document.getElementById(id).value === val) showNext(next);
+            else alert('Nope 💔');
+        }
+        function showNext(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+        function startMemory() {
+            setTimeout(() => {
+                document.getElementById('memSeq').classList.add('hidden');
+                document.getElementById('memInput').classList.remove('hidden');
+            }, 2500);
+        }
+        function countClick(target, next) {
+            clickCounter++;
+            document.getElementById('clicks').innerText = clickCounter;
+            if (clickCounter === target) showNext(next);
+        }
+        function yes() { launchFireworks(); launchConfetti(); document.getElementById('celebrate').classList.remove('hidden'); }
+        function no() {
+            const b = document.getElementById('noBtn');
+            b.style.transform = 'scale(0.7)';
+            b.innerText = 'Are you sure? 😳';
+        }
+
+        // Drag & Drop
+        document.addEventListener('dragstart', e => e.dataTransfer.setData('text', e.target.textContent));
+        document.getElementById('drop').addEventListener('dragover', e => e.preventDefault());
+        document.getElementById('drop').addEventListener('drop', e => {
+            e.preventDefault();
+            const item = e.dataTransfer.getData('text');
+            dropped.push(item);
+            e.target.textContent += ' ' + item;
+        });
+        function checkDrop() {
+            if (dropped.includes('🌹') && dropped.includes('🍫') && dropped.length === 2) showNext('s9');
+            else alert('Wrong gifts 😅');
+        }
+
+        // Match Pairs
+        const pairItems = ['❤️', '❤️', '🌹', '🌹', '🍫', '🍫', '💘', '💘'];
+        pairItems.sort(() => 0.5 - Math.random());
+        const grid = document.getElementById('pairs');
+        pairItems.forEach(val => {
+            const d = document.createElement('div');
+            d.className = 'card-tile';
+            d.dataset.val = val;
+            d.textContent = '❓';
+            d.onclick = () => flip(d);
+            grid.appendChild(d);
+        });
+        function flip(card) {
+            if (card.textContent !== '❓') return;
+            card.textContent = card.dataset.val;
+            if (!first) first = card;
+            else {
+                if (first.dataset.val === card.dataset.val) {
+                    matched += 2;
+                    first = null;
+                    if (matched === pairItems.length) showNext('s25');
+                } else {
+                    setTimeout(() => { first.textContent = '❓'; card.textContent = '❓'; first = null; }, 800);
+                }
+            }
+        }
+
+        // Fireworks
+        function launchFireworks() {
+            for (let i = 0; i < 12; i++) {
+                const fw = document.createElement('div');
+                fw.style.position = 'fixed';
+                fw.style.left = Math.random() * 100 + 'vw';
+                fw.style.top = Math.random() * 50 + 'vh';
+                fw.style.width = '8px';
+                fw.style.height = '8px';
+                fw.style.borderRadius = '50%';
+                fw.style.background = ['#ff4d6d', '#ffd700', '#00f5ff', '#ffffff'][Math.floor(Math.random() * 4)];
+                fw.style.boxShadow = '0 0 20px currentColor';
+                fw.style.animation = 'explode 1.5s ease-out forwards';
+                document.body.appendChild(fw);
+                setTimeout(() => fw.remove(), 1500);
+            }
+        }
+
+        // Confetti
+        function launchConfetti() {
+            for (let i = 0; i < 100; i++) {
+                const c = document.createElement('div');
+                c.className = 'confetti';
+                c.style.left = Math.random() * 100 + 'vw';
+                c.style.background = ['#ff4d6d', '#ffb6c1', '#ffe6eb'][Math.floor(Math.random() * 3)];
+                c.style.animationDuration = 2 + Math.random() * 3 + 's';
+                document.body.appendChild(c);
+                setTimeout(() => c.remove(), 5000);
+            }
+        }
+    </script>
+</body>
+
+</html>
